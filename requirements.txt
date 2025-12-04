@@ -1,0 +1,7 @@
+streamlit
+ultralytics
+torch
+numpy
+Pillow
+# If you used Gradio:
+# gradio
