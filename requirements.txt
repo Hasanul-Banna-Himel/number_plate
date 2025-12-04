@@ -3,5 +3,5 @@ ultralytics
 torch
 numpy
 Pillow
-# If you used Gradio:
-# gradio
+# ADD THIS LINE:
+gradio
