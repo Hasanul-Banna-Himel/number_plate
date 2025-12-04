@@ -3,5 +3,6 @@ ultralytics
 torch
 numpy
 Pillow
-# ADD THIS LINE:
 gradio
+# ADD THIS LINE to fix the libGL error:
+opencv-python-headless
