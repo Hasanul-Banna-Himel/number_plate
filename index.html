@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>YOLO Web Predictor</title>
+</head>
+<body>
+    <h1>Upload an Image for Detection</h1>
+    <input type="file" id="imageUpload" accept="image/*">
+    <button onclick="uploadImage()">Detect Objects</button>
+    <hr>
+    <h2>Results:</h2>
+    <img id="resultImage" style="max-width: 100%; display: none;" alt="Detection Results">
+
+    <script>
+        // This function handles the file upload and API call
+        async function uploadImage() {
+            const fileInput = document.getElementById('imageUpload');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert('Please select an image file first.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file); // 'file' matches the name in the FastAPI endpoint
+
+            try {
+                // Send the image to the FastAPI backend
+                const response = await fetch('http://127.0.0.1:8000/predict', { // **IMPORTANT: Update this URL**
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    // Display the Base64 encoded image received from the backend
+                    const resultImage = document.getElementById('resultImage');
+                    resultImage.src = 'data:image/png;base64,' + data.annotated_image;
+                    resultImage.style.display = 'block';
+                } else {
+                    alert('Prediction failed: ' + data.detail);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Could not connect to the API or an error occurred.');
+            }
+        }
+    </script>
+</body>
+</html>
