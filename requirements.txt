@@ -3,6 +3,4 @@ ultralytics
 torch
 numpy
 Pillow
-gradio
-# ADD THIS LINE to fix the libGL error:
 opencv-python-headless
