@@ -5,4 +5,8 @@ torchvision==0.17.2
 
 numpy<2
 Pillow
+
+# FORCE HEADLESS OpenCV
 opencv-python-headless==4.10.0.84
+# BLOCK full OpenCV from being installed by dependencies
+opencv-python==0.0.0
