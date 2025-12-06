@@ -4,5 +4,6 @@ torch
 torchvision
 numpy
 Pillow
-opencv-python-headless==4.11.0.86
-opencv-python==0.0.0
+
+# Works on Python 3.12
+opencv-python-headless==4.9.0.80
